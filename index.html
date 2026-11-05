@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>عيادة الإتقان IDC | Cabinet Dentaire Spécialisé</title>
+<meta name="description" content="عيادة الإتقان IDC: جراحة الفم، زراعة الأسنان، طب الأسنان التجميلي والتعويضات السنية. «ابتسامة جميلة، حياة جميلة». احجز موعدك عبر الواتساب.">
+<meta name="theme-color" content="#0F3D2E">
+<link rel="icon" type="image/jpeg" href="logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { brand: '#2A8C62', forest: '#1F6B4C', ink: '#0F3D2E', porcelain: '#F2F8F4', gold: '#F2B65A', goldsoft: '#FBEBCF', body: '#3B4A44' },
+    fontFamily: { sans: ['Tajawal', 'Tahoma', 'sans-serif'], display: ['Cairo', 'Tajawal', 'sans-serif'] }
+  } } }
+</script>
+<style>
+  :root { color-scheme: light; }
+  .tooth-frame { border-radius: 2.5rem 2.5rem 50% 50% / 2.5rem 2.5rem 22% 22%; }
+  @keyframes bob { 50% { transform: translateY(-10px); } }
+  .float { animation: bob 5s ease-in-out infinite; }
+  .svc { transition: background-color .25s, transform .25s, box-shadow .25s; }
+  .svc:hover { background: #fff; transform: translateY(-4px); box-shadow: 0 12px 30px -12px rgba(15,61,46,.25); }
+  @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  .hero-rise { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
+  .zoom img { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+  .zoom:hover img { transform: scale(1.05); }
+  dialog::backdrop { background: rgba(15,61,46,.88); }
+  summary::-webkit-details-marker { display: none; }
+  input, select, textarea { font-family: inherit; }
+  :focus-visible { outline: 3px solid #F2B65A; outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; scroll-behavior: auto !important; transition: none !important; } }
+</style>
+</head>
+
+<body class="font-sans text-body bg-white antialiased">
+
+<!-- ✏️ إعدادات العيادة (عدّل هنا فقط) -->
+<script>
+  const CLINIC = {
+    name:     "عيادة الإتقان IDC",
+    fullName: "Itc Dental Center",
+    slogan:   "Un beau sourire, une belle vie.",
+    whatsapp: "213770574946",
+    phone:    "0770 57 49 46",
+    mapsUrl:  "https://maps.app.goo.gl/PHz6no13qnWBmMuS7",
+    // ✏️ أوقات العمل (مؤقتة، عدّلها لاحقاً)
+    hours: [
+      ["السبت – الأربعاء", "09:00 – 17:00"],
+      ["الخميس",           "09:00 – 13:00"],
+      ["الجمعة",           "مغلق"]
+    ]
+  };
+  // آراء المرضى (من خرائط جوجل). يمكنك إضافة المزيد بنفس الشكل
+  const REVIEWS = [
+    { n: "Amira Ritadj", lang: "ar", t: "هنا تجتمع كفاءة اليد الطبية مع رقي المعاملة الإنسانية، علاج بلا ألم، ونتيجة تفوق التوقعات، واهتمام ملموس بالمتابعة بعد الزيارة، مع تقديم الشكر لفريق المساعدين في العيادة، فهم الواجهة المشرفة لهذا المكان. حسن استقبالهم وبشاشتهم الاستثنائية تحول زيارة طبيب الأسنان من مصدر قلق إلى راحة نفسية تامة وطمأنينة." },
+    { n: "RYMAR SUB", lang: "ar", t: "السلام عليكم، أنصح بعيادة الإتقان: استقبال رائع وفريق طبي متميز. عيادة ما شاء الله، نتمنى لكم المزيد من النجاح." },
+    { n: "Manar Ali messaoud", lang: "en", t: "Thank you to the entire team for your outstanding professionalism and exceptional patient care. The staff is welcoming, attentive, and highly skilled, creating a comfortable experience from start to finish. Your dedication to quality and patient satisfaction is truly appreciated. Keep up the excellent work!" }
+  ];
+
+  // نتائج الحالات: الصورة مقسومة (قبل فوق، بعد تحت)
+  const CASES = [
+    { img: 'images/case-scaling.jpg',  t: 'تنظيف الأسنان وإزالة الجير', d: 'إزالة الجير والترسبات لأسنان أنظف ولثة أكثر صحة.' },
+    { img: 'images/case-veneers.jpg',  t: 'تجميل الأسنان',            d: 'قشور تعيد للابتسامة لونها وشكلها المتناسق.' },
+    { img: 'images/case-implant.jpg',  t: 'زراعة الأسنان والتعويضات',  d: 'تعويض السن المفقود بزرعة وتركيبة طبيعية المظهر.' },
+    { img: 'images/case-full-arch.jpg', t: 'تأهيل كامل للابتسامة',     d: 'ترميم شامل يعيد للأسنان وظيفتها وجمالها.' }
+  ];
+</script>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-ink/10">
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+    <a href="#top" class="flex items-center gap-3 min-w-0">
+      <img src="logo.jpg" alt="شعار عيادة الإتقان IDC" width="48" height="48" class="h-12 w-12 rounded-full object-cover ring-2 ring-gold/60">
+      <span class="min-w-0 leading-tight">
+        <span class="block font-display font-black text-ink text-base sm:text-lg truncate" data-text="name"></span>
+        <span dir="ltr" class="block text-[11px] sm:text-xs text-forest font-bold tracking-wide truncate" data-text="fullName"></span>
+      </span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 text-sm font-bold text-ink">
+      <a href="#services" class="hover:text-brand">الاختصاصات</a>
+      <a href="#clinic" class="hover:text-brand">عيادتنا</a>
+      <a href="#results" class="hover:text-brand">النتائج</a>
+      <a href="#booking" class="hover:text-brand">احجز موعدك</a>
+      <a href="#reviews" class="hover:text-brand">آراء المرضى</a>
+      <a href="#faq" class="hover:text-brand">أسئلة شائعة</a>
+    </nav>
+    <a data-link="wa" target="_blank" rel="noopener" href="#" class="inline-flex items-center gap-2 bg-forest hover:bg-ink text-white text-sm font-bold px-4 py-2 rounded-full transition-colors">
+      <span class="hidden sm:inline">واتساب</span><span class="sm:hidden">احجز</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="bg-ink text-white overflow-hidden relative">
+  <div class="absolute -left-24 -top-24 w-96 h-96 rounded-full bg-brand/30 blur-3xl pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute -right-24 bottom-0 w-80 h-80 rounded-full bg-gold/15 blur-3xl pointer-events-none" aria-hidden="true"></div>
+  <div class="max-w-6xl mx-auto px-4 py-14 sm:py-20 lg:py-24 grid lg:grid-cols-12 gap-10 items-center relative">
+    <div class="lg:col-span-7 hero-rise">
+      <p class="inline-flex items-center gap-2 mb-5 rounded-full border border-gold/50 bg-white/5 px-4 py-1.5 text-sm text-gold">
+        <span class="w-2 h-2 rounded-full bg-gold"></span>Cabinet Dentaire Spécialisé
+      </p>
+      <h1 class="font-display font-black text-4xl sm:text-6xl leading-[1.25]">
+        ابتسامة جميلة، <span class="text-gold">حياة جميلة</span>
+      </h1>
+      <p dir="ltr" class="mt-3 text-left rtl:text-right text-lg text-gold/90 font-display italic" data-text="slogan"></p>
+      <p class="mt-6 text-lg text-white/80 leading-9 max-w-xl">
+        في <span class="font-bold text-white" data-text="name"></span> نجمع بين الخبرة والدقة والتجهيزات الحديثة لنمنحك علاجاً مريحاً ونتائج تدوم: من جراحة الفم وزراعة الأسنان إلى تجميل الابتسامة والتعويضات السنية.
+      </p>
+      <div class="mt-9 flex flex-col sm:flex-row gap-3">
+        <a data-link="wa" target="_blank" rel="noopener" href="#" class="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1fb957] text-ink font-bold px-7 py-4 rounded-full">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          طلب موعد عبر الواتساب
+        </a>
+        <a data-link="tel" href="#" class="inline-flex items-center justify-center border-2 border-white/60 hover:bg-white hover:text-ink font-bold px-7 py-4 rounded-full transition-colors">
+          اتصل بنا: <span dir="ltr" class="ms-2" data-text="phone"></span>
+        </a>
+      </div>
+    </div>
+    <div class="lg:col-span-5 flex justify-center hero-rise">
+      <div class="float relative">
+        <div class="absolute inset-0 rounded-full bg-gold/25 blur-2xl scale-95" aria-hidden="true"></div>
+        <img src="logo.jpg" alt="شعار عيادة الإتقان IDC - Cabinet Dentaire Spécialisé" width="420" height="420" class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full object-cover ring-8 ring-white/10 shadow-2xl">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="bg-porcelain py-16 sm:py-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="max-w-2xl">
+      <h2 class="font-display font-black text-3xl text-ink">اختصاصاتنا</h2>
+      <p class="mt-3 leading-8">عيادة متخصصة تغطي أهم احتياجات صحة الفم والأسنان وجمالها في مكان واحد.</p>
+    </div>
+    <div class="mt-10 grid gap-5 sm:grid-cols-2">
+      <article class="svc bg-white/60 rounded-[2rem] p-7 border border-ink/5">
+        <div class="w-12 h-12 rounded-2xl bg-ink text-gold flex items-center justify-center font-display font-black">01</div>
+        <h3 class="mt-4 font-display font-bold text-xl text-ink">جراحة الفم</h3>
+        <p dir="ltr" class="mt-1 text-sm font-bold text-forest text-right">Oral Surgeon · Chirurgie orale</p>
+        <p class="mt-3 text-sm leading-7">قلع الأضراس المعقدة وضرس العقل، واستئصال الأكياس والحالات الجراحية داخل الفم بدقة وراحة.</p>
+      </article>
+      <article class="svc bg-white/60 rounded-[2rem] p-7 border border-ink/5">
+        <div class="w-12 h-12 rounded-2xl bg-ink text-gold flex items-center justify-center font-display font-black">02</div>
+        <h3 class="mt-4 font-display font-bold text-xl text-ink">زراعة الأسنان</h3>
+        <p dir="ltr" class="mt-1 text-sm font-bold text-forest text-right">Implantologie</p>
+        <p class="mt-3 text-sm leading-7">زرعات ثابتة تعوّض الأسنان المفقودة وتمنحك مضغاً مريحاً ومظهراً طبيعياً يدوم.</p>
+      </article>
+      <article class="svc bg-white/60 rounded-[2rem] p-7 border border-ink/5">
+        <div class="w-12 h-12 rounded-2xl bg-ink text-gold flex items-center justify-center font-display font-black">03</div>
+        <h3 class="mt-4 font-display font-bold text-xl text-ink">طب الأسنان التجميلي</h3>
+        <p dir="ltr" class="mt-1 text-sm font-bold text-forest text-right">Dentisterie esthétique</p>
+        <p class="mt-3 text-sm leading-7">تبييض وتصميم ابتسامة متناسقة تعيد للأسنان لونها وشكلها بنتائج طبيعية.</p>
+      </article>
+      <article class="svc bg-white/60 rounded-[2rem] p-7 border border-ink/5">
+        <div class="w-12 h-12 rounded-2xl bg-ink text-gold flex items-center justify-center font-display font-black">04</div>
+        <h3 class="mt-4 font-display font-bold text-xl text-ink">التعويضات السنية</h3>
+        <p dir="ltr" class="mt-1 text-sm font-bold text-forest text-right">Prothèse</p>
+        <p class="mt-3 text-sm leading-7">تيجان وجسور وتركيبات متقنة تعيد وظيفة أسنانك وجمال ابتسامتك.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why" class="py-16 sm:py-20">
+  <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-12 gap-10 items-center">
+    <div class="lg:col-span-5">
+      <div class="tooth-frame bg-ink p-8 sm:p-10 text-center">
+        <p class="text-gold font-display font-black text-5xl leading-none" aria-hidden="true">“</p>
+        <p dir="ltr" class="mt-2 font-display font-bold text-2xl sm:text-3xl text-white leading-snug" data-text="slogan"></p>
+        <p class="mt-4 text-gold font-bold">ابتسامة جميلة، حياة جميلة</p>
+        <p class="mt-6 text-white/60 text-sm" dir="ltr">· IDC ·</p>
+      </div>
+    </div>
+    <div class="lg:col-span-7">
+      <h2 class="font-display font-black text-3xl text-ink">لماذا عيادة الإتقان؟</h2>
+      <p class="mt-3 leading-8 max-w-xl">اسمنا يعبّر عن منهجنا: إتقان في كل خطوة، من الفحص الأول إلى الابتسامة النهائية.</p>
+      <ul class="mt-8 space-y-4">
+        <li class="flex gap-4 items-start bg-porcelain rounded-2xl p-5">
+          <span class="mt-1 w-3 h-3 rounded-full bg-gold shrink-0"></span>
+          <div><h3 class="font-display font-bold text-ink">اختصاصات دقيقة في مكان واحد</h3><p class="text-sm leading-7 mt-1">جراحة، زراعة، تجميل وتعويضات دون الحاجة للتنقل بين عدة عيادات.</p></div>
+        </li>
+        <li class="flex gap-4 items-start bg-porcelain rounded-2xl p-5">
+          <span class="mt-1 w-3 h-3 rounded-full bg-gold shrink-0"></span>
+          <div><h3 class="font-display font-bold text-ink">خطة علاج واضحة لحالتك</h3><p class="text-sm leading-7 mt-1">نشرح لك الخيارات والمراحل بوضوح قبل البدء حتى تكون مطمئناً.</p></div>
+        </li>
+        <li class="flex gap-4 items-start bg-porcelain rounded-2xl p-5">
+          <span class="mt-1 w-3 h-3 rounded-full bg-gold shrink-0"></span>
+          <div><h3 class="font-display font-bold text-ink">نظافة وتعقيم وراحة</h3><p class="text-sm leading-7 mt-1">بيئة هادئة ونظيفة وفريق يهتم بك من لحظة دخولك حتى خروجك.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CLINIC GALLERY -->
+<section id="clinic" class="bg-porcelain py-16 sm:py-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="font-display font-black text-3xl text-ink">عيادتنا</h2>
+    <p class="mt-3 max-w-xl leading-8">مكان مضيء ونظيف ومرتب، وتجهيزات حديثة تجعل زيارتك مريحة من الاستقبال إلى العلاج.</p>
+    <div class="mt-10 grid gap-5 md:grid-cols-6">
+      <figure class="md:col-span-6 relative overflow-hidden rounded-[2rem] zoom cursor-zoom-in" data-zoom>
+        <img src="images/clinic-reception.jpg" alt="استقبال عيادة الإتقان IDC" loading="lazy" class="w-full h-56 sm:h-80 object-cover" width="1079" height="462">
+        <figcaption class="absolute bottom-3 right-3 bg-white/90 text-ink text-sm font-bold px-4 py-1.5 rounded-full">الاستقبال</figcaption>
+      </figure>
+      <figure class="md:col-span-2 relative overflow-hidden rounded-[2rem] zoom cursor-zoom-in" data-zoom>
+        <img src="images/clinic-waiting.jpg" alt="قاعة الانتظار" loading="lazy" class="w-full h-64 object-cover" width="1079" height="816">
+        <figcaption class="absolute bottom-3 right-3 bg-white/90 text-ink text-sm font-bold px-4 py-1.5 rounded-full">قاعة الانتظار</figcaption>
+      </figure>
+      <figure class="md:col-span-2 relative overflow-hidden rounded-[2rem] zoom cursor-zoom-in" data-zoom>
+        <img src="images/clinic-treatment-room.jpg" alt="غرفة العلاج وكرسي الأسنان" loading="lazy" class="w-full h-64 object-cover" width="1054" height="813">
+        <figcaption class="absolute bottom-3 right-3 bg-white/90 text-ink text-sm font-bold px-4 py-1.5 rounded-full">غرفة العلاج</figcaption>
+      </figure>
+      <figure class="md:col-span-2 relative overflow-hidden rounded-[2rem] zoom cursor-zoom-in" data-zoom>
+        <img src="images/clinic-surgery.jpg" alt="تدخل جراحي في بيئة معقمة" loading="lazy" class="w-full h-64 object-cover object-top" width="900" height="1198">
+        <figcaption class="absolute bottom-3 right-3 bg-white/90 text-ink text-sm font-bold px-4 py-1.5 rounded-full">الجراحة</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section id="results" class="bg-ink py-16 sm:py-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="font-display font-black text-3xl text-white">نتائج حالات حقيقية</h2>
+    <p class="mt-3 text-white/75 max-w-xl leading-8">صور من عيادتنا قبل العلاج وبعده. اضغط على أي صورة لتكبيرها.</p>
+    <div id="cases" class="mt-10 grid gap-6 sm:grid-cols-2"></div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking" class="py-16 sm:py-20">
+  <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-10 items-start">
+    <div>
+      <h2 class="font-display font-black text-3xl text-ink">احجز موعدك الآن</h2>
+      <p class="mt-3 leading-8 max-w-md">املأ الاستمارة وسيفتح الواتساب برسالة جاهزة إلى العيادة. نؤكد لك الموعد في أقرب وقت.</p>
+      <p class="mt-6 text-sm">أو اتصل مباشرة: <a data-link="tel" href="#" dir="ltr" class="font-bold text-forest underline" data-text="phone"></a></p>
+    </div>
+    <div class="bg-porcelain rounded-[2rem] p-5 sm:p-8">
+      <div class="space-y-4">
+        <div>
+          <label for="fName" class="block text-sm font-bold text-ink mb-1">الاسم واللقب</label>
+          <input id="fName" type="text" autocomplete="name" placeholder="مثال: محمد بن علي" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 focus:border-brand focus:ring-2 focus:ring-brand/30 outline-none">
+        </div>
+        <div>
+          <label for="fPhone" class="block text-sm font-bold text-ink mb-1">رقم الهاتف</label>
+          <input id="fPhone" type="tel" dir="ltr" inputmode="tel" autocomplete="tel" placeholder="05 55 00 00 00" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-right focus:border-brand focus:ring-2 focus:ring-brand/30 outline-none">
+        </div>
+        <div>
+          <label for="fService" class="block text-sm font-bold text-ink mb-1">الخدمة المطلوبة</label>
+          <select id="fService" class="w-full border border-slate-300 rounded-xl px-4 py-3 bg-white focus:border-brand focus:ring-2 focus:ring-brand/30 outline-none">
+            <option value="">اختر الخدمة…</option>
+            <option>جراحة الفم</option>
+            <option>زراعة الأسنان</option>
+            <option>طب الأسنان التجميلي</option>
+            <option>التعويضات السنية</option>
+            <option>استشارة / خدمة أخرى</option>
+          </select>
+        </div>
+        <div>
+          <label for="fNotes" class="block text-sm font-bold text-ink mb-1">ملاحظات (اختياري)</label>
+          <textarea id="fNotes" rows="3" placeholder="الوقت المناسب لك، أو وصف قصير لحالتك" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 focus:border-brand focus:ring-2 focus:ring-brand/30 outline-none resize-none"></textarea>
+        </div>
+        <p id="formError" class="text-sm text-red-600 min-h-[1.25rem]" role="alert"></p>
+        <button id="sendBtn" type="button" class="w-full bg-forest hover:bg-ink text-white font-bold py-4 rounded-full transition-colors">أرسل الطلب عبر الواتساب</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section id="info" class="bg-porcelain py-16 sm:py-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="font-display font-black text-3xl text-ink">أوقات العمل والموقع</h2>
+    <div class="mt-8 grid md:grid-cols-2 gap-5">
+      <div class="bg-white rounded-[2rem] p-6 sm:p-8 border border-ink/5">
+        <h3 class="font-display font-bold text-ink mb-4">أوقات العمل</h3>
+        <table class="w-full text-sm"><tbody id="hoursBody" class="divide-y divide-ink/10"></tbody></table>
+      </div>
+      <div class="bg-white rounded-[2rem] p-6 sm:p-8 border border-ink/5 flex flex-col">
+        <h3 class="font-display font-bold text-ink mb-3">تواصل معنا</h3>
+        <p class="text-sm">الهاتف: <a data-link="tel" href="#" dir="ltr" class="font-bold text-forest" data-text="phone"></a></p>
+        <a data-link="map" target="_blank" rel="noopener" href="#" class="mt-6 inline-flex items-center justify-center gap-2 bg-gold hover:bg-ink hover:text-white text-ink font-bold px-6 py-3 rounded-full self-start transition-colors">افتح في خرائط جوجل</a>
+      </div>
+    </div>
+    <div class="mt-5 overflow-hidden rounded-[2rem]">
+      <iframe title="موقع عيادة الإتقان IDC على الخريطة" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3196.156062878928!2d2.9585024000000004!3d36.7668234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb1006cd62777%3A0xc5c2ea08d71c3840!2z2LnZitin2K_YqSDYp9mE2KfYqtmC2KfZhiDZhNi32Kgg2KfZhNmB2YUg2Ygg2KfZhNin2LPZhtin2YYgSURDIGNhYmluZXQgZGVudGFpcmUgc3DDqWNpYWxpc8Op!5e0!3m2!1sar!2sdz!4v1793832657396!5m2!1sar!2sdz" class="w-full h-72 sm:h-96 block" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="py-16 sm:py-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="font-display font-black text-3xl text-ink">ماذا يقول مرضانا</h2>
+    <div id="reviewsGrid" class="mt-8 grid gap-5 md:grid-cols-3"></div>
+    <a data-link="map" target="_blank" rel="noopener" href="#" class="mt-8 inline-flex items-center gap-2 text-forest font-bold underline">شاهد كل التقييمات على خرائط جوجل</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="bg-porcelain py-16 sm:py-20">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="font-display font-black text-3xl text-ink">أسئلة شائعة</h2>
+    <p class="mt-3 leading-8">أجوبة مختصرة على أكثر ما يسألنا عنه المرضى. وللحالات الخاصة، الاستشارة هي الأفضل.</p>
+    <div class="mt-8 space-y-3">
+      <details class="group bg-white rounded-2xl border border-ink/5 px-5 py-4">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-display font-bold text-ink">
+          <span>هل زراعة الأسنان مؤلمة؟</span>
+          <span class="shrink-0 w-7 h-7 rounded-full bg-porcelain text-forest flex items-center justify-center text-lg leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <p class="mt-3 text-sm leading-7">تتم الزراعة تحت تخدير موضعي، فلا تشعر بالألم أثناء العملية. وقد تحس بانزعاج بسيط في الأيام الأولى يخف عادة بالأدوية التي يصفها الطبيب، وتُشرح لك كل التعليمات قبل وبعد العملية.</p>
+      </details>
+      <details class="group bg-white rounded-2xl border border-ink/5 px-5 py-4">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-display font-bold text-ink">
+          <span>هل أنا مرشح مناسب للزراعة؟</span>
+          <span class="shrink-0 w-7 h-7 rounded-full bg-porcelain text-forest flex items-center justify-center text-lg leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <p class="mt-3 text-sm leading-7">يحدد ذلك الفحص السريري والأشعة، فهو يعتمد على حالة اللثة وكثافة العظم وحالتك الصحية العامة. احجز استشارة ويشرح لك الطبيب الخيارات المناسبة لحالتك.</p>
+      </details>
+      <details class="group bg-white rounded-2xl border border-ink/5 px-5 py-4">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-display font-bold text-ink">
+          <span>كم تدوم الزرعة السنية؟</span>
+          <span class="shrink-0 w-7 h-7 rounded-full bg-porcelain text-forest flex items-center justify-center text-lg leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <p class="mt-3 text-sm leading-7">مع زراعة ناجحة ونظافة فموية جيدة ومتابعة منتظمة عند الطبيب، يمكن أن تدوم الزرعة سنوات طويلة. وتختلف المدة من شخص لآخر حسب العناية والعادات مثل التدخين.</p>
+      </details>
+      <details class="group bg-white rounded-2xl border border-ink/5 px-5 py-4">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-display font-bold text-ink">
+          <span>هل ضرس العقل يجب قلعه دائماً؟</span>
+          <span class="shrink-0 w-7 h-7 rounded-full bg-porcelain text-forest flex items-center justify-center text-lg leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <p class="mt-3 text-sm leading-7">لا، ليس دائماً. يُقرر الطبيب ذلك بعد الفحص والأشعة، خاصة إذا كان الضرس مائلاً أو مدفوناً أو يسبب ألماً أو التهاباً أو يؤثر على الأسنان المجاورة.</p>
+      </details>
+      <details class="group bg-white rounded-2xl border border-ink/5 px-5 py-4">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-display font-bold text-ink">
+          <span>ما الفرق بين التبييض والقشور (Veneers)؟</span>
+          <span class="shrink-0 w-7 h-7 rounded-full bg-porcelain text-forest flex items-center justify-center text-lg leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <p class="mt-3 text-sm leading-7">التبييض يفتّح لون الأسنان الطبيعية فقط، أما القشور فهي أغلفة رقيقة تُركَّب على الأسنان لتعديل اللون والشكل والفراغات معاً. يختار الطبيب الأنسب لك بعد معاينة أسنانك.</p>
+      </details>
+      <details class="group bg-white rounded-2xl border border-ink/5 px-5 py-4">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-display font-bold text-ink">
+          <span>كم تكلّف العلاجات؟</span>
+          <span class="shrink-0 w-7 h-7 rounded-full bg-porcelain text-forest flex items-center justify-center text-lg leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <p class="mt-3 text-sm leading-7">يختلف السعر حسب نوع العلاج وحالتك. بعد الفحص يعطيك الطبيب خطة علاج واضحة مع التكلفة قبل أن تبدأ، وتقدر تسأل مباشرة عبر الواتساب.</p>
+      </details>
+      <details class="group bg-white rounded-2xl border border-ink/5 px-5 py-4">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-display font-bold text-ink">
+          <span>كيف أحجز موعداً؟</span>
+          <span class="shrink-0 w-7 h-7 rounded-full bg-porcelain text-forest flex items-center justify-center text-lg leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <p class="mt-3 text-sm leading-7">بسهولة: املأ استمارة الحجز في هذه الصفحة أو راسلنا عبر الواتساب أو اتصل بنا مباشرة على الرقم الموضح، ونؤكد لك الموعد في أقرب وقت.</p>
+      </details>
+    </div>
+    <p class="mt-8 text-sm">سؤالك غير موجود؟ <a data-link="wa" target="_blank" rel="noopener" href="#" class="font-bold text-forest underline">اسألنا عبر الواتساب</a></p>
+  </div>
+</section>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "هل زراعة الأسنان مؤلمة؟", "acceptedAnswer": {"@type": "Answer", "text": "تتم الزراعة تحت تخدير موضعي، فلا تشعر بالألم أثناء العملية. وقد تحس بانزعاج بسيط في الأيام الأولى يخف عادة بالأدوية التي يصفها الطبيب، وتُشرح لك كل التعليمات قبل وبعد العملية."}}, {"@type": "Question", "name": "هل أنا مرشح مناسب للزراعة؟", "acceptedAnswer": {"@type": "Answer", "text": "يحدد ذلك الفحص السريري والأشعة، فهو يعتمد على حالة اللثة وكثافة العظم وحالتك الصحية العامة. احجز استشارة ويشرح لك الطبيب الخيارات المناسبة لحالتك."}}, {"@type": "Question", "name": "كم تدوم الزرعة السنية؟", "acceptedAnswer": {"@type": "Answer", "text": "مع زراعة ناجحة ونظافة فموية جيدة ومتابعة منتظمة عند الطبيب، يمكن أن تدوم الزرعة سنوات طويلة. وتختلف المدة من شخص لآخر حسب العناية والعادات مثل التدخين."}}, {"@type": "Question", "name": "هل ضرس العقل يجب قلعه دائماً؟", "acceptedAnswer": {"@type": "Answer", "text": "لا، ليس دائماً. يُقرر الطبيب ذلك بعد الفحص والأشعة، خاصة إذا كان الضرس مائلاً أو مدفوناً أو يسبب ألماً أو التهاباً أو يؤثر على الأسنان المجاورة."}}, {"@type": "Question", "name": "ما الفرق بين التبييض والقشور (Veneers)؟", "acceptedAnswer": {"@type": "Answer", "text": "التبييض يفتّح لون الأسنان الطبيعية فقط، أما القشور فهي أغلفة رقيقة تُركَّب على الأسنان لتعديل اللون والشكل والفراغات معاً. يختار الطبيب الأنسب لك بعد معاينة أسنانك."}}, {"@type": "Question", "name": "كم تكلّف العلاجات؟", "acceptedAnswer": {"@type": "Answer", "text": "يختلف السعر حسب نوع العلاج وحالتك. بعد الفحص يعطيك الطبيب خطة علاج واضحة مع التكلفة قبل أن تبدأ، وتقدر تسأل مباشرة عبر الواتساب."}}, {"@type": "Question", "name": "كيف أحجز موعداً؟", "acceptedAnswer": {"@type": "Answer", "text": "بسهولة: املأ استمارة الحجز في هذه الصفحة أو راسلنا عبر الواتساب أو اتصل بنا مباشرة على الرقم الموضح، ونؤكد لك الموعد في أقرب وقت."}}]}</script>
+
+</main>
+
+<footer class="bg-ink text-white/80 py-8">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
+    <span class="flex items-center gap-3">
+      <img src="logo.jpg" alt="" width="36" height="36" class="h-9 w-9 rounded-full object-cover">
+      <span class="font-display font-bold text-white" data-text="name"></span>
+      <span dir="ltr" class="text-gold" data-text="phone"></span>
+    </span>
+    <span>© <span id="year"></span> جميع الحقوق محفوظة</span>
+  </div>
+</footer>
+
+<dialog id="lightbox" class="bg-transparent p-0 max-w-[92vw] max-h-[92vh] m-auto overflow-visible">
+  <form method="dialog"><button class="absolute -top-11 left-0 text-white text-3xl leading-none px-2" aria-label="إغلاق">×</button></form>
+  <img id="lbImg" alt="" class="max-w-[92vw] max-h-[85vh] rounded-2xl object-contain">
+</dialog>
+
+<!-- زر الواتساب الثابت -->
+<a data-link="wa" target="_blank" rel="noopener" href="#" aria-label="تواصل عبر الواتساب" class="fixed bottom-4 left-4 z-50 w-14 h-14 rounded-full bg-[#25D366] text-ink shadow-lg flex items-center justify-center hover:scale-105 transition-transform">
+  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+  const digits = s => s.replace(/\D/g, '');
+  const waBase = 'https://wa.me/' + digits(CLINIC.whatsapp);
+
+  document.querySelectorAll('[data-text]').forEach(el => el.textContent = CLINIC[el.dataset.text]);
+  document.querySelectorAll('[data-link]').forEach(el => {
+    const t = el.dataset.link;
+    if (t === 'wa')  el.href = waBase + '?text=' + encodeURIComponent('مرحباً، أود حجز موعد في ' + CLINIC.name);
+    if (t === 'tel') el.href = 'tel:' + digits(CLINIC.phone);
+    if (t === 'map') el.href = CLINIC.mapsUrl;
+  });
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ===== أوقات العمل =====
+  document.getElementById('hoursBody').innerHTML = CLINIC.hours.map(([d, h]) =>
+    '<tr><td class="py-3 font-bold text-ink">' + d + '</td><td class="py-3 text-left' + (h === 'مغلق' ? ' text-red-600' : '') + '">' + h + '</td></tr>').join('');
+
+  // ===== آراء المرضى =====
+  const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  document.getElementById('reviewsGrid').innerHTML = REVIEWS.map(r => {
+    const ltr = r.lang !== 'ar';
+    return '<figure class="bg-porcelain rounded-[2rem] p-6 border border-ink/5">' +
+      '<div class="text-gold text-lg" aria-label="5 من 5 نجوم">★★★★★</div>' +
+      '<blockquote lang="' + r.lang + '" dir="' + (ltr ? 'ltr' : 'rtl') + '" class="mt-3 leading-8 text-sm' + (ltr ? ' text-left' : '') + '">' + esc(r.t) + '</blockquote>' +
+      '<figcaption class="mt-4 font-bold text-ink text-sm"' + (ltr ? ' dir="ltr"' : '') + '>' + esc(r.n) + '</figcaption></figure>';
+  }).join('');
+
+  // ===== نتائج الحالات =====
+  const badge = 'absolute rounded-full bg-ink/85 text-white text-xs font-bold px-3 py-1 pointer-events-none right-3';
+  document.getElementById('cases').innerHTML = CASES.map(c => {
+    const msg = encodeURIComponent('مرحباً، أريد حجز موعد لـ: ' + c.t + ' في ' + CLINIC.name);
+    return '<article class="bg-white rounded-[2rem] overflow-hidden flex flex-col">' +
+      '<div class="relative zoom overflow-hidden cursor-zoom-in" data-zoom>' +
+      '<img src="' + c.img + '" alt="قبل وبعد: ' + c.t + '" loading="lazy" class="w-full aspect-square object-cover" width="900" height="900">' +
+      '<span class="' + badge + ' top-3">قبل</span><span class="' + badge + '" style="top:52%">بعد</span></div>' +
+      '<div class="p-5 flex flex-col grow"><h3 class="font-display font-bold text-lg text-ink">' + c.t + '</h3>' +
+      '<p class="mt-1 text-sm leading-7 grow">' + c.d + '</p>' +
+      '<a target="_blank" rel="noopener" href="' + waBase + '?text=' + msg + '" class="mt-4 inline-flex self-start items-center bg-porcelain hover:bg-forest hover:text-white text-forest text-sm font-bold px-5 py-2 rounded-full transition-colors">احجز حالتك</a></div></article>';
+  }).join('');
+
+  // ===== تكبير الصور =====
+  const lb = document.getElementById('lightbox'), lbImg = document.getElementById('lbImg');
+  document.querySelectorAll('[data-zoom]').forEach(el => el.addEventListener('click', () => {
+    const i = el.querySelector('img'); lbImg.src = i.src; lbImg.alt = i.alt; lb.showModal();
+  }));
+  lb.addEventListener('click', e => { if (e.target === lb || e.target === lbImg) lb.close(); });
+
+  // ===== الحجز عبر الواتساب =====
+  document.getElementById('sendBtn').addEventListener('click', () => {
+    const name = document.getElementById('fName').value.trim();
+    const phone = document.getElementById('fPhone').value.trim();
+    const service = document.getElementById('fService').value;
+    const notes = document.getElementById('fNotes').value.trim();
+    const err = document.getElementById('formError');
+    if (name.length < 3) { err.textContent = 'يرجى كتابة الاسم واللقب.'; return; }
+    if (digits(phone).length < 9) { err.textContent = 'يرجى إدخال رقم هاتف صحيح.'; return; }
+    if (!service) { err.textContent = 'يرجى اختيار الخدمة المطلوبة.'; return; }
+    err.textContent = '';
+    const msg = ['مرحباً ' + CLINIC.name + '، أود حجز موعد:', '', '👤 الاسم واللقب: ' + name, '📞 الهاتف: ' + phone,
+      '🦷 الخدمة: ' + service, '📝 ملاحظات: ' + (notes || 'لا يوجد'), '', 'شكراً لكم.'].join('\n');
+    window.open(waBase + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  });
+</script>
+</body>
+</html>
